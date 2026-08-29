@@ -153,7 +153,7 @@ Shows Sales, Profit, Profit Margin %, Orders, Customers, monthly margin trends, 
 2018 is deliberately excluded from year-level analysis because it contains only 37 days of data.
 
  <p align="center">
-  <img src="Images/Patients_Clinical_Profile.png" width="800" alt="Patients Clinical Profile"/>
+  <img src="images/Imagespage2 -discount-analysis.png" width="800" alt="Discount Analysis"/>
 </p>
 
 **Page 2 — Discount Analysis**
