@@ -161,7 +161,7 @@ Shows Sales, Profit, Profit Margin %, Orders, Customers, monthly margin trends, 
 Shows discounted sales, average discount, profit margin, and the no-discount baseline. Includes margin and order volume by discount band, dynamic filtering, and an alert identifying the highest-volume discount band.
 
  <p align="center">
-  <img src="Images/Patients_Clinical_Profile.png" width="800" alt="Patients Clinical Profile"/>
+  <img src="images/Product & Category Performance.png" width="800" alt="Product & Category Performance"/>
 </p>
 
 **Page 3 — Product & Category Performance**
