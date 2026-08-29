@@ -143,7 +143,7 @@ Sales: **$36.78M** · Profit: **$3.97M** · Margin: **10.78%** · Orders: **65.7
 
 The report contains three Power BI pages:
 <p align="center">
-  <img src="images/Imagespage1-executive-overview.png" width="800" alt="Executive Overview dashboard page"/>
+  <img src="images/page1-executive-overview.png" width="800" alt="Executive Overview dashboard page"/>
 </p>
 
 **Page 1 — Executive Overview**
@@ -153,7 +153,7 @@ Shows Sales, Profit, Profit Margin %, Orders, Customers, monthly margin trends, 
 2018 is deliberately excluded from year-level analysis because it contains only 37 days of data.
 
  <p align="center">
-  <img src="images/Imagespage2 -discount-analysis.png" width="800" alt="Discount Analysis"/>
+  <img src="images/page2-discount-analysis.png" width="800" alt="Discount Analysis"/>
 </p>
 
 **Page 2 — Discount Analysis**
@@ -161,7 +161,7 @@ Shows Sales, Profit, Profit Margin %, Orders, Customers, monthly margin trends, 
 Shows discounted sales, average discount, profit margin, and the no-discount baseline. Includes margin and order volume by discount band, dynamic filtering, and an alert identifying the highest-volume discount band.
 
  <p align="center">
-  <img src="images/Product & Category Performance.png" width="800" alt="Product & Category Performance"/>
+  <img src="images/page3-product-category.png" width="800" alt="Product & Category Performance"/>
 </p>
 
 **Page 3 — Product & Category Performance**
@@ -195,9 +195,9 @@ Sales-Profitability-Analysis/
 │
 ├── SQL/
 │   ├── 01_bronze_layer.sql
-│   ├── 02_silver_layer_fixed.sql
-│   ├── 03_gold_layer_fixed.sql
-│   ├── 04_reports_views_fixed.sql
+│   ├── 02_silver_layer.sql
+│   ├── 03_gold_layer.sql
+│   ├── 04_reports_views.sql
 │   ├── 05_eda_diagnostics.sql
 │   └── 06_analytical_queries.sql
 │
