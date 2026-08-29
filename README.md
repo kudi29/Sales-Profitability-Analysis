@@ -142,9 +142,8 @@ Sales: **$36.78M** · Profit: **$3.97M** · Margin: **10.78%** · Orders: **65.7
 ## Dashboard
 
 The report contains three Power BI pages:
-
- <p align="center">
-  <img src="images/Imagespage1-executive-overview" width="800" alt=""/>
+<p align="center">
+  <img src="Images/page1-executive-overview.png" width="800" alt="Executive Overview dashboard page"/>
 </p>
 
 **Page 1 — Executive Overview**
