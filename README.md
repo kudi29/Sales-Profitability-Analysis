@@ -143,7 +143,9 @@ Sales: **$36.78M** · Profit: **$3.97M** · Margin: **10.78%** · Orders: **65.7
 
 The report contains three Power BI pages:
 
-![Executive Overview](Images/page1-executive-overview.png)
+ <p align="center">
+  <img src="Images/Imagespage1-executive-overview" width="800" alt="Patients Clinical Profile"/>
+</p>
 
 **Page 1 — Executive Overview**
 
@@ -151,17 +153,21 @@ Shows Sales, Profit, Profit Margin %, Orders, Customers, monthly margin trends, 
 
 2018 is deliberately excluded from year-level analysis because it contains only 37 days of data.
 
-![Discount Analysis](Images/page2-discount-analysis.png)
+ <p align="center">
+  <img src="Images/Patients_Clinical_Profile.png" width="800" alt="Patients Clinical Profile"/>
+</p>
 
 **Page 2 — Discount Analysis**
 
 Shows discounted sales, average discount, profit margin, and the no-discount baseline. Includes margin and order volume by discount band, dynamic filtering, and an alert identifying the highest-volume discount band.
 
-![Product & Category Performance](Images/page3-product-category.png)
+ <p align="center">
+  <img src="Images/Patients_Clinical_Profile.png" width="800" alt="Patients Clinical Profile"/>
+</p>
 
 **Page 3 — Product & Category Performance**
 
-Compares category sales, margins, and profit contribution. Includes a Top 10 Products table ranked by actual profit and margin conditional formatting based on performance against the company average.
+Compares category sales, margins, and profit contribution. Includes a Top 10 Products table ranked by actual profit and margin, with conditional formatting based on performance against the company average.
 
 ---
 
