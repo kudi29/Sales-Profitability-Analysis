@@ -1,0 +1,162 @@
+{
+  "name": "Supply Chain Profitability",
+  "dataColors": [
+    "#0F6E56",
+    "#D85A30",
+    "#BA7517",
+    "#5F5E5A",
+    "#1D9E75",
+    "#F0997B",
+    "#7F77DD",
+    "#888780"
+  ],
+  "background": "#F5F6F4",
+  "foreground": "#1C2B33",
+  "tableAccent": "#0F6E56",
+  "foregroundNeutralSecondary": "#5F5E5A",
+  "foregroundNeutralTertiary": "#888780",
+  "backgroundLight": "#FFFFFF",
+  "backgroundNeutral": "#EEEEEC",
+  "good": "#0F6E56",
+  "neutral": "#5F5E5A",
+  "bad": "#D85A30",
+  "maximum": "#0F6E56",
+  "center": "#F5F6F4",
+  "minimum": "#D85A30",
+  "null": "#B4B2A9",
+
+  "textClasses": {
+    "callout": {
+      "fontFace": "IBM Plex Mono",
+      "fontSize": 22,
+      "color": "#1C2B33"
+    },
+    "title": {
+      "fontFace": "Inter",
+      "fontSize": 14,
+      "color": "#1C2B33"
+    },
+    "header": {
+      "fontFace": "Inter",
+      "fontSize": 13,
+      "color": "#5F5E5A"
+    },
+    "label": {
+      "fontFace": "IBM Plex Mono",
+      "fontSize": 11,
+      "color": "#1C2B33"
+    }
+  },
+
+  "visualStyles": {
+    "card": {
+      "*": {
+        "background": [{ "properties": { "color": { "solid": { "color": "#FFFFFF" } } } }],
+        "labels": [{ "properties": {
+          "color": { "solid": { "color": "#1C2B33" } },
+          "fontSize": 22,
+          "fontFamily": "IBM Plex Mono"
+        } }],
+        "categoryLabels": [{ "properties": {
+          "color": { "solid": { "color": "#5F5E5A" } },
+          "fontSize": 13,
+          "fontFamily": "Inter"
+        } }]
+      }
+    },
+    "multiRowCard": {
+      "*": {
+        "background": [{ "properties": { "color": { "solid": { "color": "#FFFFFF" } } } }],
+        "dataLabels": [{ "properties": {
+          "color": { "solid": { "color": "#1C2B33" } },
+          "fontSize": 20,
+          "fontFamily": "IBM Plex Mono"
+        } }],
+        "categoryLabels": [{ "properties": {
+          "color": { "solid": { "color": "#5F5E5A" } },
+          "fontSize": 12,
+          "fontFamily": "Inter"
+        } }]
+      }
+    },
+    "lineChart": {
+      "*": {
+        "dataPoint": [{ "properties": { "defaultColor": { "solid": { "color": "#0F6E56" } } } }],
+        "categoryAxis": [{ "properties": {
+          "fontFamily": "Inter",
+          "fontSize": 11,
+          "labelColor": { "solid": { "color": "#5F5E5A" } },
+          "gridlineColor": { "solid": { "color": "#E1E0D9" } }
+        } }],
+        "valueAxis": [{ "properties": {
+          "fontFamily": "IBM Plex Mono",
+          "fontSize": 11,
+          "labelColor": { "solid": { "color": "#5F5E5A" } },
+          "gridlineColor": { "solid": { "color": "#E1E0D9" } }
+        } }]
+      }
+    },
+    "barChart": {
+      "*": {
+        "dataPoint": [{ "properties": { "defaultColor": { "solid": { "color": "#0F6E56" } } } }],
+        "categoryAxis": [{ "properties": {
+          "fontFamily": "Inter",
+          "fontSize": 11,
+          "labelColor": { "solid": { "color": "#1C2B33" } }
+        } }],
+        "valueAxis": [{ "properties": {
+          "fontFamily": "IBM Plex Mono",
+          "fontSize": 11,
+          "labelColor": { "solid": { "color": "#5F5E5A" } },
+          "gridlineColor": { "solid": { "color": "#E1E0D9" } }
+        } }]
+      }
+    },
+    "columnChart": {
+      "*": {
+        "dataPoint": [{ "properties": { "defaultColor": { "solid": { "color": "#0F6E56" } } } }],
+        "categoryAxis": [{ "properties": {
+          "fontFamily": "Inter",
+          "fontSize": 11,
+          "labelColor": { "solid": { "color": "#1C2B33" } }
+        } }],
+        "valueAxis": [{ "properties": {
+          "fontFamily": "IBM Plex Mono",
+          "fontSize": 11,
+          "labelColor": { "solid": { "color": "#5F5E5A" } },
+          "gridlineColor": { "solid": { "color": "#E1E0D9" } }
+        } }]
+      }
+    },
+    "tableEx": {
+      "*": {
+        "grid": [{ "properties": { "gridVertical": false, "gridColor": { "solid": { "color": "#E1E0D9" } } } }],
+        "columnHeaders": [{ "properties": {
+          "fontFamily": "Inter",
+          "fontSize": 12,
+          "fontColor": { "solid": { "color": "#1C2B33" } },
+          "backColor": { "solid": { "color": "#EEEEEC" } }
+        } }],
+        "values": [{ "properties": {
+          "fontFamily": "IBM Plex Mono",
+          "fontSize": 12,
+          "fontColorPrimary": { "solid": { "color": "#1C2B33" } }
+        } }]
+      }
+    },
+    "slicer": {
+      "*": {
+        "items": [{ "properties": {
+          "fontColor": { "solid": { "color": "#1C2B33" } },
+          "fontFamily": "Inter",
+          "background": { "solid": { "color": "#FFFFFF" } }
+        } }]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [{ "properties": { "color": { "solid": { "color": "#F5F6F4" } }, "transparency": 0 } }]
+      }
+    }
+  }
+}
