@@ -193,7 +193,7 @@ Compares category sales, margins, and profit contribution. Includes a Top 10 Pro
 ```text
 Sales-Profitability-Analysis/
 │
-├── SQL/
+├── sql/
 │   ├── 01_bronze_layer.sql
 │   ├── 02_silver_layer.sql
 │   ├── 03_gold_layer.sql
@@ -201,15 +201,15 @@ Sales-Profitability-Analysis/
 │   ├── 05_eda_diagnostics.sql
 │   └── 06_analytical_queries.sql
 │
-├── PowerBI/
+├── power_bi/
 │   ├── Sales-Profitability-Analysis.pbix
 │   └── supply_chain_theme.json
 │
-├── Documentation/
+├── Docs/
 │   ├── documentation.md
 │   └── dax_measures.md
 │
-├── Images/
+├── images/
 │   ├── page1-executive-overview.png
 │   ├── page2-discount-analysis.png
 │   └── page3-product-category.png
