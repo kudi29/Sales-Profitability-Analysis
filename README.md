@@ -206,8 +206,7 @@ Sales-Profitability-Analysis/
 │   └── supply_chain_theme.json
 │
 ├── Documentation/
-│   ├── page1_documentation.md
-│   ├── page2_documentation.md
+│   ├── documentation.md
 │   └── dax_measures.md
 │
 ├── Images/
