@@ -201,7 +201,7 @@ Sales-Profitability-Analysis/
 │   ├── 05_eda_diagnostics.sql
 │   └── 06_analytical_queries.sql
 │
-├── power_bi/
+├── power bi/
 │   ├── Sales-Profitability-Analysis.pbix
 │   └── supply_chain_theme.json
 │
