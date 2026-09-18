@@ -2,7 +2,7 @@
 -- DIMENSION TABLES
 -- ============================================================
 
--- dim_date  (FIX: build from union of order_date + shipping_date so
+-- dim_date  (Build from union of order_date + shipping_date so
 -- shipping_date_id never fails to match)
 DROP TABLE IF EXISTS gold.dim_date;
 CREATE TABLE gold.dim_date (
@@ -35,7 +35,7 @@ FROM (
 ORDER BY full_date;
 
 -- ============================================================
--- dim_customer  (unchanged)
+-- dim_customer
 DROP TABLE IF EXISTS gold.dim_customer;
 CREATE TABLE gold.dim_customer (
     customer_id INTEGER PRIMARY KEY,
@@ -61,7 +61,7 @@ WHERE customer_id IS NOT NULL
 ORDER BY customer_id;
 
 -- ============================================================
--- dim_product  (unchanged)
+-- dim_product
 DROP TABLE IF EXISTS gold.dim_product;
 CREATE TABLE gold.dim_product (
     product_id INTEGER PRIMARY KEY,
@@ -89,7 +89,7 @@ WHERE product_card_id IS NOT NULL
 ORDER BY product_card_id;
 
 -- ============================================================
--- dim_location  (FIX: dedupe on business key only, not lat/long,
+-- dim_location  (Dedupe on business key only, not lat/long,
 -- so each city maps to exactly one location_id)
 DROP TABLE IF EXISTS gold.dim_location;
 CREATE TABLE gold.dim_location (
@@ -113,8 +113,7 @@ WHERE order_city IS NOT NULL
 ORDER BY market, order_region, order_country, order_state, order_city;
 
 -- ============================================================
--- dim_shipping  (unchanged here; see note on modeling smell above —
--- out of scope for the 3-page report, so not fixed in this pass)
+-- dim_shipping  ( Dimension stores unique shipping modes; shipment-level metrics stay in the fact table.)
 DROP TABLE IF EXISTS gold.dim_shipping;
 CREATE TABLE gold.dim_shipping (
     shipping_id SERIAL PRIMARY KEY,
@@ -136,8 +135,7 @@ FROM silver.supplychaindataset
 WHERE shipping_mode IS NOT NULL;
 
 -- ============================================================
--- POPULATE FK COLUMNS IN SILVER  (FIX: this entire block now runs
--- BEFORE the fact table is built, not after)
+-- POPULATE FK COLUMNS IN SILVER  
 -- ============================================================
 
 ALTER TABLE silver.supplychaindataset
@@ -176,7 +174,7 @@ FROM gold.dim_date d
 WHERE d.full_date = s.shipping_date;
 
 -- ============================================================
--- FACT TABLE  (now built AFTER silver's FK columns are populated)
+-- FACT TABLE 
 -- ============================================================
 
 DROP TABLE IF EXISTS gold.fact_order_items;
