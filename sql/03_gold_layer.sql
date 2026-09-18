@@ -89,8 +89,7 @@ WHERE product_card_id IS NOT NULL
 ORDER BY product_card_id;
 
 -- ============================================================
--- dim_location  (Dedupe on business key only, not lat/long,
--- so each city maps to exactly one location_id)
+-- dim_location  
 DROP TABLE IF EXISTS gold.dim_location;
 CREATE TABLE gold.dim_location (
     location_id SERIAL PRIMARY KEY,
