@@ -137,12 +137,16 @@ Data was processed through a three-layer pipeline in PostgreSQL:
 
 ## Data Modeling
 
-The Power BI semantic model uses a **star schema** built around four objects:
+The Power BI semantic model uses a **star schema** built around four tables, plus a dedicated `_Measures` table that holds every DAX measure:
 
 - `dim_date`
 - `dim_product`
 - `vw_discount_impact`
 - `vw_profit_by_category`
+
+<p align="center">
+  <img src="images/data_model.png" width="800" alt="Power BI model view: dim_date and dim_product each connected one-to-many to vw_discount_impact and vw_profit_by_category, with a separate _Measures table"/>
+</p>
 
 **Relationships:**
 - `dim_date[date_id]` → `vw_discount_impact[order_date_id]`
@@ -272,6 +276,7 @@ Sales-Profitability-Analysis/
 │   └── dax_measures.md
 │
 ├── images/
+│   ├── data_model.png
 │   ├── page1-executive-overview.png
 │   ├── page2-discount-analysis.png
 │   └── page3-product-category.png
