@@ -1,95 +1,126 @@
-# Page 1 Measures
+# DAX Measures Library
+
+Measures used in the Power BI report, grouped by report page. Tables referenced: `dim_date`, `dim_product`, `vw_profit_by_category`, `vw_discount_impact`.
+
+---
+
+# Page 1: Executive Overview
 
 ### Total Sales
-
 ```DAX
-
 Total Sales =
 SUM ( vw_profit_by_category[sales] )
+```
 
 ### Total Profit
+```DAX
 Total Profit =
 SUM ( vw_profit_by_category[benefit_per_order] )
+```
 
-### Profit Margin
+### Profit Margin %
+```DAX
 Profit Margin % =
 DIVIDE ( [Total Profit], [Total Sales], 0 )
+```
 
 ### Total Orders
+```DAX
 Total Orders =
 DISTINCTCOUNT ( vw_profit_by_category[order_id] )
+```
 
 ### Total Customers
+```DAX
 Total Customers =
 DISTINCTCOUNT ( vw_profit_by_category[customer_id] )
+```
 
 ### Total Sales PY
+```DAX
 Total Sales PY =
 CALCULATE (
     [Total Sales],
     SAMEPERIODLASTYEAR ( dim_date[full_date] )
 )
+```
 
 ### Total Sales YoY %
+```DAX
 Total Sales YoY % =
 DIVIDE (
     [Total Sales] - [Total Sales PY],
     [Total Sales PY],
     BLANK ()
 )
+```
 
 ### Total Profit PY
+```DAX
 Total Profit PY =
 CALCULATE (
     [Total Profit],
     SAMEPERIODLASTYEAR ( dim_date[full_date] )
 )
+```
 
 ### Total Profit YoY %
+```DAX
 Total Profit YoY % =
 DIVIDE (
     [Total Profit] - [Total Profit PY],
     [Total Profit PY],
     BLANK ()
 )
+```
 
 ### Profit Margin % PY
+```DAX
 Profit Margin % PY =
 CALCULATE (
     [Profit Margin %],
     SAMEPERIODLASTYEAR ( dim_date[full_date] )
 )
+```
 
 ### Profit Margin % Change (pp)
+```DAX
 Profit Margin % Change (pp) =
 [Profit Margin %] - [Profit Margin % PY]
+```
 
 ### Total Sales YoY Color
+```DAX
 Total Sales YoY Color =
 IF (
     [Total Sales YoY %] >= 0,
     "#0F6E56",
     "#D85A30"
 )
+```
 
 ### Total Profit YoY Color
+```DAX
 Total Profit YoY Color =
 IF (
     [Total Profit YoY %] >= 0,
     "#0F6E56",
     "#D85A30"
 )
+```
 
 ### Profit Margin Change Color
+```DAX
 Profit Margin Change Color =
 IF (
     [Profit Margin % Change (pp)] >= 0,
     "#0F6E56",
     "#D85A30"
 )
-
+```
 
 ### Sales Trend Alert
+```DAX
 Sales Trend Alert =
 VAR CurrentMargin = [Profit Margin %]
 VAR PriorMargin = [Profit Margin % PY]
@@ -103,103 +134,118 @@ RETURN
             & " YoY",
         BLANK ()
     )
-
+```
 
 ### Page Subtitle
+```DAX
 Page Subtitle =
-"Fiscal year "
+"Year "
     & SELECTEDVALUE ( dim_date[year], "All years" )
     & " performance"
+```
 
+---
 
-# Page 2 Measures
-
+# Page 2: Discount Analysis
 
 ### Avg Discount Amount
+```DAX
 Avg Discount Amount =
-AVERAGE ( 'reports vw_discount_impact'[order_item_discount] )
-
+AVERAGE ( vw_discount_impact[order_item_discount] )
+```
 
 ### Discount Band Sales
+```DAX
 Discount Band Sales =
-SUM ( 'reports vw_discount_impact'[sales] )
-
+SUM ( vw_discount_impact[sales] )
+```
 
 ### Discount Band Profit
+```DAX
 Discount Band Profit =
-SUM ( 'reports vw_discount_impact'[benefit_per_order] )
-
+SUM ( vw_discount_impact[benefit_per_order] )
+```
 
 ### Discount Band Margin %
+```DAX
 Discount Band Margin % =
 DIVIDE ( [Discount Band Profit], [Discount Band Sales], 0 )
-
+```
 
 ### Discount Band Order Count
+```DAX
 Discount Band Order Count =
-DISTINCTCOUNT ( 'reports vw_discount_impact'[order_id] )
-
+DISTINCTCOUNT ( vw_discount_impact[order_id] )
+```
 
 ### No Discount Baseline %
+```DAX
 No Discount Baseline % =
 13.6 / 100
-
+```
 
 ### Discount Page Subtitle
+```DAX
 Discount Page Subtitle =
 SELECTEDVALUE (
     dim_product[category_name],
     "All categories"
 )
-    & " — Fiscal year "
+    & " — Year "
     & SELECTEDVALUE ( dim_date[year], "All years" )
-
+```
 
 ### Discount Volume Alert
+```DAX
 Discount Volume Alert =
-VAR WorstBand =
+VAR TopVolumeBand =
     TOPN (
         1,
         FILTER (
-            VALUES ( 'reports vw_discount_impact'[discount_band] ),
-            'reports vw_discount_impact'[discount_band]
-                <> "0% - No discount"
+            VALUES ( vw_discount_impact[discount_band] ),
+            vw_discount_impact[discount_band] <> "0% - No discount"
         ),
         CALCULATE ( [Discount Band Order Count] ),
         DESC
     )
 
-VAR WorstBandName =
+VAR TopVolumeBandName =
     CONCATENATEX (
-        WorstBand,
-        'reports vw_discount_impact'[discount_band]
+        TopVolumeBand,
+        vw_discount_impact[discount_band]
     )
 
 RETURN
     "The "
-        & WorstBandName
+        & TopVolumeBandName
         & " band carries the most order volume and falls below the no-discount "
         & "baseline margin — the highest-impact band to review."
+```
 
+---
 
-# Page 3 Measures
+# Page 3: Product & Category Performance
 
 ### Category Sales
+```DAX
 Category Sales =
 SUM ( vw_profit_by_category[sales] )
-
+```
 
 ### Category Profit
+```DAX
 Category Profit =
 SUM ( vw_profit_by_category[benefit_per_order] )
-
+```
 
 ### Category Margin %
+```DAX
 Category Margin % =
 DIVIDE ( [Category Profit], [Category Sales], 0 )
-
+```
 
 ### Product Rank by Sales
+```DAX
 Product Rank by Sales =
 RANKX (
     ALL ( dim_product[product_name] ),
@@ -207,9 +253,10 @@ RANKX (
     ,
     DESC
 )
+```
 
-
-###Product Rank by Profit
+### Product Rank by Profit
+```DAX
 Product Rank by Profit =
 RANKX (
     ALL ( dim_product[product_name] ),
@@ -217,33 +264,38 @@ RANKX (
     ,
     DESC
 )
+```
 
-
-### Top 10 Products by Sales
+### Is Top 10 Product by Sales
+```DAX
 Is Top 10 Product by Sales =
 IF ( [Product Rank by Sales] <= 10, 1, 0 )
-
+```
 
 ### Total Company Sales
+```DAX
 Total Company Sales =
 CALCULATE ( [Total Sales], ALL ( dim_product ) )
-
+```
 
 ### % of Total Sales
+```DAX
 % of Total Sales =
 DIVIDE ( [Total Sales], [Total Company Sales], 0 )
-
+```
 
 ### Margin vs Company Avg
+```DAX
 Margin vs Company Avg =
 [Category Margin %]
     - CALCULATE (
         [Profit Margin %],
         ALL ( dim_product )
     )
-
+```
 
 ### Best Margin Category
+```DAX
 Best Margin Category =
 VAR BestCat =
     TOPN (
@@ -258,33 +310,16 @@ RETURN
         BestCat,
         dim_product[category_name]
     )
-
+```
 
 ### Category Page Subtitle
+```DAX
 Category Page Subtitle =
 SELECTEDVALUE (
     dim_product[category_name],
     "All categories"
 )
-    & " — Fiscal year "
+    & " — Year "
     & SELECTEDVALUE ( dim_date[year], "All years" )
-
-
-### 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
 
