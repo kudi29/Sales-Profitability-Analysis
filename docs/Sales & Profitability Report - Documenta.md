@@ -2,8 +2,6 @@
 
 Technical and analytical documentation for the Sales & Profitability Analysis project. The [README](../README.md) is the short tour; this document is the full reference. It covers how the data flows from the source file to the dashboard, what every table and measure means, how to rebuild everything, and what the numbers can and cannot be trusted for.
 
-The DAX measures themselves are in [dax_measures.md](dax_measures.md).
-
 ## Table of Contents
 
 1. [Project at a Glance](#1-project-at-a-glance)
