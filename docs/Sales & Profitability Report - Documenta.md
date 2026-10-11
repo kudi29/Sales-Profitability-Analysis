@@ -109,7 +109,7 @@ Sales-Profitability-Analysis/
 ├── Docs/
 │   ├── documentation.md             this file
 │   └── dax_measures.md
-├── images/                          dashboard screenshots used in the README
+├── images/                          dashboard screenshots and the model view used in the README
 └── README.md
 ```
 
@@ -146,7 +146,7 @@ Scripts 02 and 03 are safe to re-run. Each creates its tables only if they are m
 5. **Run `06_reports_views.sql`.**
 6. **Run `04_eda_diagnostics.sql`** and compare each result with [Section 12](#12-validation-and-data-quality).
 7. **Open the `.pbix` file.** Under *Transform data → Data source settings*, point the PostgreSQL source at your server and database, then refresh.
-8. **Check the result.** With no slicers applied, the Executive Overview page should show Total Sales $36.45M, Total Profit $3.93M, Profit Margin 10.79%, 63.63K orders, and 18.53K customers.
+8. **Check the result.** With no slicers applied the Executive Overview page should show Total Sales $36.45M, Total Profit $3.93M, Profit Margin 10.79%, 63.63K orders and 18.53K customers.
 
 ---
 
@@ -391,6 +391,11 @@ The $1,000 and $100 thresholds are illustrative and are not tuned to the dataset
 | `dim_product` | `gold.dim_product` | Product, category and department filters |
 | `vw_discount_impact` | `reports.vw_discount_impact` | Fact-like table for the discount page |
 | `vw_profit_by_category` | `reports.vw_profit_by_category` | Fact-like table for the overview and product pages |
+| `_Measures` | Empty table created in Power BI | Holds every DAX measure in one place. It has no relationships and its helper column is hidden |
+
+![Power BI model view](../images/data_model.png)
+
+Power BI shows the tables with their schema as a prefix (for example `gold dim_date` and `reports vw_discount_impact`). This documentation uses the plain table names.
 
 ### Relationships
 
@@ -668,7 +673,7 @@ The ten products shown in the Top 10 table account for $33.10M of sales (90.8%) 
 2. Run `02_silver_layer.sql`, then `03_gold_layer.sql`.
 3. Run `04_eda_diagnostics.sql` and confirm the healthy results in Section 12.
 4. Refresh the Power BI report.
-5. If a new year is added, check how many days of orders it has. A partial year should be handled like 2018, and the note on the report should be updated.
+5. If a new year is added, check how many days of orders it has. A partial year should be handled like 2018, and the note on the report updated.
 
 ### Changing a discount band
 
@@ -701,7 +706,7 @@ Scripts 02 and 03 create tables only if they do not exist, so a changed definiti
 |---|---|
 | Baseline | The margin earned with no discount |
 | Band | A range of discount rates, such as 11%–20% |
-| Bronze, silver, gold | The raw, cleaned, and analysis-ready layers of the warehouse |
+| Bronze, silver, gold | The raw, cleaned and analysis-ready layers of the warehouse |
 | Dimension | A table of descriptive attributes used to filter and group (date, product, customer) |
 | Fact table | A table of measurable events, here one row per order line |
 | Grain | What one row of a table represents |
